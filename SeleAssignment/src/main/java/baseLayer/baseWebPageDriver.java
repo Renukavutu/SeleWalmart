@@ -2,10 +2,12 @@ package baseLayer;
 
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class baseWebPageDriver {
 	
-	//public static WebDriver driver;
 /*	
 	public baseWebPageDriver(WebDriver driver) {
 		baseWebPageDriver.driver=driver;
@@ -17,4 +19,6 @@ public class baseWebPageDriver {
 		return Value;
 		
 	} 
+	
+	
 }

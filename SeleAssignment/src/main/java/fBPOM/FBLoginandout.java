@@ -5,7 +5,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 
 import org.openqa.selenium.WebElement;
-
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
 import baseLayer.WebDriverLaunch;
@@ -21,20 +22,26 @@ public class FBLoginandout extends WebDriverLaunch {
 		super();
 	}*/
 	
-	public void fblogin() {
+	public void fblogin()  {
 		
 		driver.get("https://www.facebook.com/");
 		driver.manage().timeouts().implicitlyWait(100, TimeUnit.SECONDS);
 			
-			
+		WebDriverWait wait= new WebDriverWait(driver,30);
+		
+		
 		Properties=new PropertyReader("C:\\Project\\Selenium_test\\SeleAssignment\\properties\\environment.properties", driver);
-		String username=getvalues(driver,Properties.get("username"));
-		driver.findElement(By.xpath("//INPUT[@id='email']")).sendKeys(username);
+		
+		WebElement usrname= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//INPUT[@id='email']")));
+		usrname.sendKeys(getvalues(driver,Properties.get("username")));
 				
-		WebElement password=driver.findElement(By.xpath("//INPUT[@id='pass']"));
+		WebElement password=wait.until(ExpectedConditions.visibilityOfElementLocated((By.xpath("//INPUT[@id='pass']"))));
+		
 		password.sendKeys(getvalues(driver,Properties.get("password")));
 		
+	
 		driver.findElement(By.xpath("//INPUT[@id='u_0_a']")).click();
+		
 		
 		
 	

@@ -6,6 +6,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 
@@ -57,8 +59,12 @@ public class WebDriverLaunch extends baseWebPageDriver {
 	
 	}
 	
-	
-	
+	@AfterTest
+	public void teardown()
+	{
+		driver.close();
+		driver.quit();
+	}
 	
 }
 	
